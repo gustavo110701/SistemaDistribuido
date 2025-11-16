@@ -1,6 +1,9 @@
 import socket
 import threading
 from datetime import datetime
+import sqlite3  # <-- Asegúrate que esté
+import json     # <-- Lo necesitarás pronto
+import os       # <-- Asegúrate que esté
 
 # Flag para controlar el cierre del programa
 shutdown_event = threading.Event()
