@@ -5,6 +5,22 @@ import sqlite3  # <-- Asegúrate que esté
 import json     # <-- Lo necesitarás pronto
 import os       # <-- Asegúrate que esté
 
+
+# --- Configuración de Rutas ---
+
+# 1. Esto encuentra la ruta de la carpeta donde está tu script
+#    En tu caso: /opt/emergencias/SistemaDistribuido/
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# 2. Ruta a tus "planos" (el archivo .sql)
+#    Usa os.path.join para unir la base con la subcarpeta
+SQL_SCHEMA_PATH = os.path.join(BASE_DIR,'schema2.sql')
+
+# 3. Ruta a tu "edificio" (la base de datos real .db)
+#    Vamos a crearla dentro de tu carpeta 'data'
+DB_PATH = os.path.join(BASE_DIR,'emergencias.db') # <--- ¡Crearemos este!
+
+
 # Flag para controlar el cierre del programa
 shutdown_event = threading.Event()
 
