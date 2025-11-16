@@ -19,6 +19,7 @@ SQL_SCHEMA_PATH = os.path.join(BASE_DIR,'schema2.sql')
 # 3. Ruta a tu "edificio" (la base de datos real .db)
 #    Vamos a crearla dentro de tu carpeta 'data'
 DB_PATH = os.path.join(BASE_DIR,'emergencias.db') # <--- ¡Crearemos este!
+print('La ejecucion fue correcta!!')
 
 def init_db():
     """
