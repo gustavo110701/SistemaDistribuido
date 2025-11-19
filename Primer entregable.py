@@ -102,7 +102,7 @@ def server(server_port):
 # --- FUNCIONES DE LA APLICACIÓN (VISUALIZACIÓN) ---
 
 def ver_pacientes_locales():
-    print("\n--- 🤕 PACIENTES REGISTRADOS ---")
+    print("\n--- PACIENTES REGISTRADOS ---")
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("SELECT id, nombre, edad, contacto FROM PACIENTES")
@@ -124,7 +124,7 @@ def ver_doctores_locales():
     
     if not rows: print("   (Sin registros)")
     for r in rows:
-        estado = "🟢 Disponible" if r[2] == 1 else "🔴 Ocupado"
+        estado = "Disponible" if r[2] == 1 else "Ocupado"
         print(f"   ID: {r[0]} | {r[1]} - {estado}")
 
 def ver_camas_locales():
@@ -145,13 +145,13 @@ def ver_camas_locales():
     for r in rows:
         # r[0]=numero, r[1]=ocupada, r[2]=nombre_paciente
         if r[1] == 1:
-            estado = f"🔴 OCUPADA por: {r[2]}"
+            estado = f"OCUPADA por: {r[2]}"
         else:
             estado = "🟢 LIBRE"
         print(f"   Cama {r[0]}: {estado}")
 
 def ver_trabajadores_sociales():
-    print("\n--- 📋 TRABAJADORES SOCIALES ---")
+    print("\n--- TRABAJADORES SOCIALES ---")
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("SELECT id, nombre, activo FROM TRABAJADORES_SOCIALES")
@@ -164,7 +164,7 @@ def ver_trabajadores_sociales():
         print(f"   ID: {r[0]} | {r[1]} ({estado})")
 
 def ver_visitas_emergencia():
-    print("\n--- 🚨 HISTORIAL DE VISITAS (Bitácora) ---")
+    print("\n--- HISTORIAL DE VISITAS (Bitácora) ---")
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     # Seleccionamos Folio, Estado y Fecha
@@ -174,7 +174,7 @@ def ver_visitas_emergencia():
     
     if not rows: print("   (Sin registros)")
     for r in rows:
-        print(f"   📄 {r[0]} | Estado: {r[1]}")
+        print(f"   {r[0]} | Estado: {r[1]}")
         print(f"      Fecha: {r[2]} | Paciente ID: {r[3]}")
         print("      " + "-"*30)
 
@@ -209,7 +209,7 @@ def main():
     t.daemon = True
     t.start()
     
-    print(f"\n🏥 NODO ACTIVO - Puerto {SERVER_PORT}")
+    print(f"\nNODO ACTIVO - Puerto {SERVER_PORT}")
     print("Sistema de Gestión Distribuida v1.0")
 
     try:
@@ -217,13 +217,13 @@ def main():
             print("\n" + "="*30)
             print("       MENÚ PRINCIPAL")
             print("="*30)
-            print("1. ➕ Registrar Nuevo Paciente")
-            print("2. 🤕 Ver Pacientes")
-            print("3. 👨‍⚕️ Ver Doctores")
-            print("4. 🛏️ Ver Camas")
-            print("5. 📋 Ver Trabajadores Sociales")
-            print("6. 🚨 Ver Visitas (Bitácora)")
-            print("9. 🚪 Salir")
+            print("1. Registrar Nuevo Paciente")
+            print("2. Ver Pacientes")
+            print("3. Ver Doctores")
+            print("4. Ver Camas")
+            print("5. Ver Trabajadores Sociales")
+            print("6. Ver Visitas (Bitácora)")
+            print("9. Salir")
             print("-" * 30)
             
             op = input("Opción > ")
