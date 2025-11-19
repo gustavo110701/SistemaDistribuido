@@ -213,6 +213,38 @@ def ver_pacientes_locales():
         if conn:
             conn.close()
 
+#--- Funcion para ver doctores ---- 
+
+def ver_doctores_locales():
+    """
+    Lógica para la Opción 3 del menú.
+    Muestra la lista de doctores y su disponibilidad.
+    """
+    print("\n[Doctores en Turno]")
+    conn = None
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        # Seleccionamos nombre, especialidad y estado (1=Disponible, 0=Ocupado)
+        cursor.execute("SELECT id, nombre, especialidad, disponible FROM DOCTORES")
+        doctores = cursor.fetchall()
+        
+        if not doctores:
+            print("No hay doctores registrados.")
+            return
+            
+        print(f"Mostrando {len(doctores)} doctores:")
+        for d in doctores:
+            estado = "🟢 Disponible" if d[3] == 1 else "🔴 Ocupado"
+            print(f"  ID: {d[0]} | {d[1]} ({d[2]}) - {estado}")
+            
+    except Exception as e:
+        print(f"Error al consultar doctores: {e}")
+    finally:
+        if conn:
+            conn.close()
+
+
 # --- Función Principal ---
 
 def main():
@@ -239,13 +271,17 @@ def main():
             print("\n--- Menú Principal ---")
             print("1. Registrar Nuevo Paciente")
             print("2. Ver Pacientes Locales")
+            print("3. Ver Doctores")
             print("9. Salir")
+
             opcion = input("Seleccione una opción: ")
 
             if opcion == '1':
                 registrar_nuevo_paciente()
             elif opcion == '2':
                 ver_pacientes_locales()
+            elif opcion == '3':
+                ver_doctores_locales()
             elif opcion == '9':
                 print("\nCerrando el programa...")
                 shutdown_event.set() # Notifica al hilo servidor
