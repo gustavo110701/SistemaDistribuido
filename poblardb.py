@@ -69,7 +69,7 @@ def poblar_datos():
         print("  - 10 Camas (1 Ocupada, 9 Libres)")
 
     except Exception as e:
-        print(f"❌ Error al poblar la base de datos: {e}")
+        print(f"Error al poblar la base de datos: {e}")
     finally:
         if conn:
             conn.close()
