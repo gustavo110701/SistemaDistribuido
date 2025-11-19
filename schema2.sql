@@ -17,7 +17,6 @@ CREATE TABLE IF NOT EXISTS PACIENTES (
 CREATE TABLE IF NOT EXISTS DOCTORES (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre TEXT NOT NULL,
-    especialidad TEXT,
     sala_id INTEGER,         -- Sala a la que está asignado (ej: 1, 2, 3, 4)
     disponible INTEGER DEFAULT 1 -- 1 para true (disponible), 0 para false (ocupado)
 );
