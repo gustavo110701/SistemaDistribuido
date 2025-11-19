@@ -322,6 +322,7 @@ def main():
             print("4. Ver Camas")
             print("5. Ver Trabajadores Sociales")
             print("6. Ver Visitas (Bitácora)")
+            print("7. 🩺 Asignar Doctor a Paciente") # <--- NUEVA OPCIÓN
             print("9. Salir")
             print("-" * 30)
             
@@ -333,6 +334,7 @@ def main():
             elif op == '4': ver_camas_locales()
             elif op == '5': ver_trabajadores_sociales()
             elif op == '6': ver_visitas_emergencia()
+            elif op == '7': asignar_doctor() 
             elif op == '9': 
                 print("Cerrando sistema..."); shutdown_event.set(); break
             else: print("Opción no válida.")
